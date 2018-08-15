@@ -1,0 +1,791 @@
+# source: http://localhost:4477/prisma/dev2
+# timestamp: Wed Aug 15 2018 13:12:55 GMT+0300 (MSK)
+
+type AggregateChannel {
+  count: Int!
+}
+
+type AggregateEfir {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Channel implements Node {
+  id: ID!
+  name: String!
+  efirs(where: EfirWhereInput, orderBy: EfirOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Efir!]
+}
+
+"""A connection to a list of items."""
+type ChannelConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ChannelEdge]!
+  aggregate: AggregateChannel!
+}
+
+input ChannelCreateInput {
+  name: String!
+  efirs: EfirCreateManyInput
+}
+
+input ChannelCreateManyInput {
+  create: [ChannelCreateInput!]
+  connect: [ChannelWhereUniqueInput!]
+}
+
+"""An edge in a connection."""
+type ChannelEdge {
+  """The item at the end of the edge."""
+  node: Channel!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ChannelOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ChannelPreviousValues {
+  id: ID!
+  name: String!
+}
+
+type ChannelSubscriptionPayload {
+  mutation: MutationType!
+  node: Channel
+  updatedFields: [String!]
+  previousValues: ChannelPreviousValues
+}
+
+input ChannelSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChannelSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChannelSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChannelSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ChannelWhereInput
+}
+
+input ChannelUpdateDataInput {
+  name: String
+  efirs: EfirUpdateManyInput
+}
+
+input ChannelUpdateInput {
+  name: String
+  efirs: EfirUpdateManyInput
+}
+
+input ChannelUpdateManyInput {
+  create: [ChannelCreateInput!]
+  connect: [ChannelWhereUniqueInput!]
+  disconnect: [ChannelWhereUniqueInput!]
+  delete: [ChannelWhereUniqueInput!]
+  update: [ChannelUpdateWithWhereUniqueNestedInput!]
+  upsert: [ChannelUpsertWithWhereUniqueNestedInput!]
+}
+
+input ChannelUpdateWithWhereUniqueNestedInput {
+  where: ChannelWhereUniqueInput!
+  data: ChannelUpdateDataInput!
+}
+
+input ChannelUpsertWithWhereUniqueNestedInput {
+  where: ChannelWhereUniqueInput!
+  update: ChannelUpdateDataInput!
+  create: ChannelCreateInput!
+}
+
+input ChannelWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ChannelWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ChannelWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ChannelWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  efirs_every: EfirWhereInput
+  efirs_some: EfirWhereInput
+  efirs_none: EfirWhereInput
+}
+
+input ChannelWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+type Efir implements Node {
+  id: ID!
+  name: String!
+}
+
+"""A connection to a list of items."""
+type EfirConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [EfirEdge]!
+  aggregate: AggregateEfir!
+}
+
+input EfirCreateInput {
+  name: String!
+}
+
+input EfirCreateManyInput {
+  create: [EfirCreateInput!]
+  connect: [EfirWhereUniqueInput!]
+}
+
+"""An edge in a connection."""
+type EfirEdge {
+  """The item at the end of the edge."""
+  node: Efir!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum EfirOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type EfirPreviousValues {
+  id: ID!
+  name: String!
+}
+
+type EfirSubscriptionPayload {
+  mutation: MutationType!
+  node: Efir
+  updatedFields: [String!]
+  previousValues: EfirPreviousValues
+}
+
+input EfirSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [EfirSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [EfirSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [EfirSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: EfirWhereInput
+}
+
+input EfirUpdateDataInput {
+  name: String
+}
+
+input EfirUpdateInput {
+  name: String
+}
+
+input EfirUpdateManyInput {
+  create: [EfirCreateInput!]
+  connect: [EfirWhereUniqueInput!]
+  disconnect: [EfirWhereUniqueInput!]
+  delete: [EfirWhereUniqueInput!]
+  update: [EfirUpdateWithWhereUniqueNestedInput!]
+  upsert: [EfirUpsertWithWhereUniqueNestedInput!]
+}
+
+input EfirUpdateWithWhereUniqueNestedInput {
+  where: EfirWhereUniqueInput!
+  data: EfirUpdateDataInput!
+}
+
+input EfirUpsertWithWhereUniqueNestedInput {
+  where: EfirWhereUniqueInput!
+  update: EfirUpdateDataInput!
+  create: EfirCreateInput!
+}
+
+input EfirWhereInput {
+  """Logical AND on all given filters."""
+  AND: [EfirWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [EfirWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [EfirWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+}
+
+input EfirWhereUniqueInput {
+  id: ID
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+  createChannel(data: ChannelCreateInput!): Channel!
+  createEfir(data: EfirCreateInput!): Efir!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateChannel(data: ChannelUpdateInput!, where: ChannelWhereUniqueInput!): Channel
+  updateEfir(data: EfirUpdateInput!, where: EfirWhereUniqueInput!): Efir
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteChannel(where: ChannelWhereUniqueInput!): Channel
+  deleteEfir(where: EfirWhereUniqueInput!): Efir
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertChannel(where: ChannelWhereUniqueInput!, create: ChannelCreateInput!, update: ChannelUpdateInput!): Channel!
+  upsertEfir(where: EfirWhereUniqueInput!, create: EfirCreateInput!, update: EfirUpdateInput!): Efir!
+  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyChannels(data: ChannelUpdateInput!, where: ChannelWhereInput): BatchPayload!
+  updateManyEfirs(data: EfirUpdateInput!, where: EfirWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyChannels(where: ChannelWhereInput): BatchPayload!
+  deleteManyEfirs(where: EfirWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  channels(where: ChannelWhereInput, orderBy: ChannelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Channel]!
+  efirs(where: EfirWhereInput, orderBy: EfirOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Efir]!
+  user(where: UserWhereUniqueInput!): User
+  channel(where: ChannelWhereUniqueInput!): Channel
+  efir(where: EfirWhereUniqueInput!): Efir
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  channelsConnection(where: ChannelWhereInput, orderBy: ChannelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ChannelConnection!
+  efirsConnection(where: EfirWhereInput, orderBy: EfirOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EfirConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  channel(where: ChannelSubscriptionWhereInput): ChannelSubscriptionPayload
+  efir(where: EfirSubscriptionWhereInput): EfirSubscriptionPayload
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  fullname: String
+  birthday: DateTime
+  channels(where: ChannelWhereInput, orderBy: ChannelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Channel!]
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  name: String!
+  fullname: String
+  birthday: DateTime
+  channels: ChannelCreateManyInput
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge."""
+  node: User!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  fullname_ASC
+  fullname_DESC
+  birthday_ASC
+  birthday_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  name: String!
+  fullname: String
+  birthday: DateTime
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateInput {
+  name: String
+  fullname: String
+  birthday: DateTime
+  channels: ChannelUpdateManyInput
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  fullname: String
+
+  """All values that are not equal to given value."""
+  fullname_not: String
+
+  """All values that are contained in given list."""
+  fullname_in: [String!]
+
+  """All values that are not contained in given list."""
+  fullname_not_in: [String!]
+
+  """All values less than the given value."""
+  fullname_lt: String
+
+  """All values less than or equal the given value."""
+  fullname_lte: String
+
+  """All values greater than the given value."""
+  fullname_gt: String
+
+  """All values greater than or equal the given value."""
+  fullname_gte: String
+
+  """All values containing the given string."""
+  fullname_contains: String
+
+  """All values not containing the given string."""
+  fullname_not_contains: String
+
+  """All values starting with the given string."""
+  fullname_starts_with: String
+
+  """All values not starting with the given string."""
+  fullname_not_starts_with: String
+
+  """All values ending with the given string."""
+  fullname_ends_with: String
+
+  """All values not ending with the given string."""
+  fullname_not_ends_with: String
+  birthday: DateTime
+
+  """All values that are not equal to given value."""
+  birthday_not: DateTime
+
+  """All values that are contained in given list."""
+  birthday_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  birthday_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  birthday_lt: DateTime
+
+  """All values less than or equal the given value."""
+  birthday_lte: DateTime
+
+  """All values greater than the given value."""
+  birthday_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  birthday_gte: DateTime
+  channels_every: ChannelWhereInput
+  channels_some: ChannelWhereInput
+  channels_none: ChannelWhereInput
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  name: String
+}

@@ -1,0 +1,8 @@
+# import *  from "../generated/prisma.graphql"
+ 
+
+# import * from './query.graphql' 
+
+scalar Upload
+
+ 

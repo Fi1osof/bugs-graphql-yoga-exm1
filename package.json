@@ -1,0 +1,13 @@
+{
+  "name": "my-yoga-server",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "global": "^4.3.2",
+    "graphql-import": "0.4.5",
+    "graphql-yoga": "1.8.4",
+    "nodemon": "^1.18.3",
+    "prisma-binding": "^2.1.4"
+  }
+}

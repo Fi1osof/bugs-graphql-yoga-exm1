@@ -1,0 +1,19 @@
+type User {
+  id: ID! @unique
+  name: String! @unique
+  fullname: String
+  birthday: DateTime
+  channels: [Channel!]!
+}
+
+type Channel{
+  id: ID! @unique
+  name: String!
+  efirs: [Efir!]!
+}
+
+
+type Efir {
+  id: ID! @unique
+  name: String!
+}

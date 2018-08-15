@@ -1,0 +1,9 @@
+
+ 
+type Query { 
+  me: String
+}
+
+# type Query {
+#   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+# }
